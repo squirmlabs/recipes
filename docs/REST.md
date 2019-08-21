@@ -206,3 +206,33 @@ A report for a single day could potentially return the following information:
   "cloud_coverage": "low"
 }
 ```
+
+```xml
+<?xml version='1.0' encoding='UTF-8' ?>
+<root>
+  <temp_unit value="C" />
+  <humidity_percentage value="75.0" />
+  <cloud_coverage value="low" />
+  <date value="2014-10-25" />
+  <min_temp value="10.0" />
+  <max_temp value="25.5" />
+</root>
+```
+
+```pipe
+2014-10-25|25.5|10.0|C|75.0|low
+```
+
+And there could be many more. They all successfully represent the resource correctly; __it is up to the client to read and parse the information__
+
+_For the resource above the following functions might exist with the client to transform dates, temperatures, percentages, string to color_
+
+Even when the resource has more than one representation, it is common for clients (due to implicity of development) to only request one of them. 
+
+Unless you’re doing some sort of consistency check against the API, there is no point in requesting more than one representation of the same resource, is there? 
+
+There are two very popular ways to let the client request a specific representation on a resource that has more than one.
+
+1.The first one directly follows the principles described by REST (when using HTTP as a basis), called _content negotiation_, which is part of the HTTP standard (JSON).
+2.The second one is a simplified version of this, with limited benefits. For the sake of completeness, I’ll quickly go over them both.
+
