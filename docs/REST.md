@@ -176,15 +176,33 @@ A resource is the abstraction of anything that can be conceptualized (from an im
 _Table 1-1. Resource Structure Description_
 
 
-| Property        | Description|
-|----------------:|:-----------|
-| Representations | It can be any way of representing data(binary, JSON, XML, etc.). A single resource can have multiple representations|
-| Identifier | A URL that retrieves only one specific resource at any given time.|
-| Metadata | Content-type, last-modified time, and so forth.|
-| Control Data | Is-modifiable-since, cache-control.|
+|        Property | Description                                                                                                          |
+| --------------: | :------------------------------------------------------------------------------------------------------------------- |
+| Representations | It can be any way of representing data(binary, JSON, XML, etc.). A single resource can have multiple representations |
+|      Identifier | A URL that retrieves only one specific resource at any given time.                                                   |
+|        Metadata | Content-type, last-modified time, and so forth.                                                                      |
+|    Control Data | Is-modifiable-since, cache-control.                                                                                  |
 
 ### Representations
 
 At its core, a representation is a set of bytes, and some metadata that describes these bytes.
 
 > A single resource can have more than one representation; just think of a weather service report (which could act as a possible resource).
+
+A report for a single day could potentially return the following information:
+- The date the report is referencing
+- The maximum temperature for the day
+- The minimum temperature for the day
+- The temperature unit to be used
+- A humidity percentage
+- A code indicating how cloudy the day will be (e.g., high, medium, low)
+
+```json
+{
+  "date": "2014-10-25",
+  "max_temp": 25.5,
+  "min_temp": 10.0,
+  "humidity_percentage": 75.0,
+  "cloud_coverage": "low"
+}
+```
