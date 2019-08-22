@@ -1,0 +1,15 @@
+query getContact($contactId: Int!) {
+  contact(id: $contactId) {
+    name
+    phone
+    email
+  }
+}
+
+query getContacts($contactName: String!) {
+  contact(name: $contactName) {
+    name
+    phone
+    email
+  }
+}
