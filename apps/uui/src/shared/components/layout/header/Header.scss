@@ -1,0 +1,172 @@
+@import '../../../styles/_dependencies';
+
+.header {
+    z-index: 10;
+
+    @include minBreakpoint(1281px) {
+        min-width: 1400px;
+    }
+
+    .wrapper {
+        background: $navBgColor;
+        border-bottom: 1px solid #194a6f;
+    }
+
+    .nav {
+        align-items: center;
+        color: #eee;
+        display: flex;
+        flex-wrap: nowrap;
+        font-size: 16px;
+        height: 66px;
+        justify-content: space-between;
+        line-height: 40px;
+        padding: 10px;
+        width: 100%;
+
+        @include mobileLandscape() {
+            width: 98%;
+        }
+
+        @include mobile {
+            font-size: 14px;
+        }
+
+        @include print {
+            background: #fff;
+            justify-content: flex-end;
+            padding: 0;
+            height: auto;
+            border: none;
+            line-height: 20px;
+        }
+
+        .headerNav {
+            white-space: nowrap;
+
+            a {
+                &:link,
+                &:visited {
+                    display: inline-block;
+                    margin-top: 5px;
+                    padding: 5px 10px 6px 10px;
+                    line-height: 150%;
+                    text-decoration: none;
+                    border-radius: 6px;
+                    color: #e9f3fa;
+                    box-shadow: inset 0 1px #358fd2, inset 0 -1px 0 #174567,
+                        inset 1px 0 #2d87cb, inset -1px 0 #2d87cb;
+                }
+
+                &:active {
+                    background: #1d5884;
+                    border-color: transparent;
+                    box-shadow: inset 0 -1px 1px #4a9bd7,
+                        inset 0 3px 8px #0f2e46;
+                }
+
+                &:hover {
+                    background: #2774ae;
+                }
+
+                @include print {
+                    &,
+                    &:link,
+                    &:visited {
+                        display: none;
+                    }
+                }
+            }
+
+            .pillNav {
+                margin-right: 1.5rem;
+                display: inline-block;
+
+                .currentButton {
+                    background: #1d5884;
+                    border-color: transparent;
+                    box-shadow: inset 0 -1px 1px #4a9bd7,
+                        inset 0 3px 8px #0f2e46;
+                }
+
+                a {
+                    border-radius: 0;
+                    box-shadow: inset 0 1px #358fd2, inset 0 -1px #174567;
+
+                    &:first-child {
+                        border-radius: 6px 0 0 6px;
+                        border-right: none;
+                        box-shadow: inset 0 1px #358fd2, inset 0 -1px #174567,
+                            inset 1px 0 #2d87cb, inset -1px 0 #2d87cb;
+
+                        &.currentButton {
+                            background: #1d5884;
+                            border-color: transparent;
+                            box-shadow: inset 0 -1px 1px #4a9bd7,
+                                inset 0 3px 8px #0f2e46;
+                        }
+                    }
+
+                    &:last-child {
+                        border-radius: 0 6px 6px 0;
+                        box-shadow: inset 0 1px #358fd2, inset 0 -1px #174567,
+                            inset 1px 0 #2d87cb, inset -1px 0 #2d87cb;
+
+                        &.currentButton {
+                            background: #1d5884;
+                            border-color: transparent;
+                            box-shadow: inset 0 -1px 1px #4a9bd7,
+                                inset 0 3px 8px #0f2e46;
+                        }
+                    }
+                }
+
+                @include tablet() {
+                    display: none;
+                }
+
+                @include print {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .userName {
+        margin-right: 1.5rem;
+
+        .fullName {
+            display: inline;
+        }
+
+        .firstName {
+            display: none;
+        }
+
+        @include mobile {
+            margin-right: 16px;
+
+            .fullName {
+                display: none;
+            }
+
+            .firstName {
+                display: inline;
+            }
+        }
+
+        @include print {
+            color: #000;
+            font-size: 11px;
+            margin-right: 15px;
+
+            .fullName {
+                display: inline;
+            }
+
+            .firstName {
+                display: none;
+            }
+        }
+    }
+}

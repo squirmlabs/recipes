@@ -1,0 +1,311 @@
+// Actions
+export const FETCH_REPORT = {
+  request: () => 'FETCH_REPORT_REQUEST',
+  success: () => 'FETCH_REPORT_SUCCESS',
+};
+
+export const FETCH_FILTER = {
+  request: () => 'FETCH_FILTER_REQUEST',
+  success: () => 'FETCH_FILTER_SUCCESS',
+};
+
+export const FETCH_REVENUE = {
+  request: () => 'FETCH_REVENUE_REQUEST',
+  success: () => 'FETCH_REVENUE_SUCCESS',
+};
+
+export const UPDATE_REVENUE = {
+  request: () => 'UPDATE_REVENUE_REQUEST',
+  success: () => 'UPDATE_REVENUE_SUCCESS',
+};
+
+export const CREATE_REVENUE = {
+  request: () => 'CREATE_REVENUE_REQUEST',
+  success: () => 'CREATE_REVENUE_SUCCESS',
+};
+
+export const UPDATE_FILTER = {
+  request: () => 'UPDATE_FILTER_REQUEST',
+  success: () => 'UPDATE_FILTER_SUCCESS',
+};
+
+export const REMOVE_FILTER = {
+  request: () => 'REMOVE_FILTER_REQUEST',
+  success: () => 'REMOVE_FILTER_SUCCESS',
+};
+
+export const CLEAR_FILTERS = {
+  request: () => 'CLEAR_FILTERS_REQUEST',
+  success: () => 'CLEAR_FILTERS_SUCCESS',
+};
+
+export const FETCH_USER = {
+  request: () => 'FETCH_USER_REQUEST',
+  success: () => 'FETCH_USER_SUCCESS',
+};
+
+export const UPDATE_DEAL = {
+  request: () => 'UPDATE_DEAL_REQUEST',
+  success: () => 'UPDATE_DEAL_SUCCESS',
+};
+
+export const UPDATE_NOTE = {
+  request: () => 'UPDATE_NOTE_REQUEST',
+  success: () => 'UPDATE_NOTE_SUCCESS',
+};
+export const UPDATE_USER = {
+  request: () => 'UPDATE_USER_REQUEST',
+  success: () => 'UPDATE_USER_SUCCESS',
+};
+
+export const LOADED_TABLE = 'LOADED_TABLE';
+
+export const EXPAND_REPORT = 'EXPAND_REPORT';
+
+export const DOWNLOAD_EXCEL = {
+  request: () => 'DOWNLOAD_EXCEL_REQUEST',
+  success: () => 'DOWNLOAD_EXCEL_SUCCESS',
+};
+
+export const TOGGLE_NEW_ADMIN_FORM = 'TOGGLE_NEW_ADMIN_FORM';
+
+export const FETCH_ADMIN_USERS = {
+  request: () => 'FETCH_ADMIN_USERS_REQUEST',
+  success: () => 'FETCH_ADMIN_USERS_SUCCESS',
+};
+
+export const FETCH_ADMIN_USER = {
+  request: () => 'FETCH_ADMIN_USER_REQUEST',
+  success: () => 'FETCH_ADMIN_USER_SUCCESS',
+};
+
+export const ADMIN_USER_CLEAR = 'ADMIN_USER_CLEAR';
+
+export const ADMIN_USER_EDIT = 'ADMIN_USER_EDIT';
+
+export const ADMIN_USER_DELETE = 'ADMIN_USER_DELETE';
+
+export const FETCH_ADMIN_TEAMS = {
+  request: () => 'FETCH_ADMIN_TEAMS_REQUEST',
+  success: () => 'FETCH_ADMIN_TEAMS_SUCCESS',
+};
+
+export const FETCH_ADMIN_TEAM = {
+  request: () => 'FETCH_ADMIN_TEAM_REQUEST',
+  success: () => 'FETCH_ADMIN_TEAM_SUCCESS',
+};
+
+export const ADMIN_TEAM_REMOVE_USER = 'ADMIN_TEAM_REMOVE_USER';
+
+export const ADMIN_TEAM_ADD_USER = 'ADMIN_TEAM_ADD_USER';
+
+export const UPDATE_ADMIN_TEAM = {
+  request: () => 'UPDATE_ADMIN_TEAM_REQUEST',
+  success: () => 'UPDATE_ADMIN_TEAM_SUCCESS',
+};
+
+export const CREATE_ADMIN_TEAM = {
+  request: () => 'CREATE_ADMIN_TEAM_REQUEST',
+  success: () => 'CREATE_ADMIN_TEAM_SUCCESS',
+};
+
+export const ADMIN_TEAM_CLEAR = 'ADMIN_TEAM_CLEAR';
+
+export const ADMIN_TEAM_SAVED = 'ADMIN_TEAM_SAVED';
+
+export const FETCH_ADMIN_REGIONS = {
+  request: () => 'FETCH_ADMIN_REGIONS_REQUEST',
+  success: () => 'FETCH_ADMIN_REGIONS_SUCCESS',
+};
+
+export const FETCH_ADMIN_ROLES = {
+  request: () => 'FETCH_ADMIN_ROLES_REQUEST',
+  success: () => 'FETCH_ADMIN_ROLES_SUCCESS',
+};
+
+export const ADMIN_USER_ADD_REGION = 'ADMIN_USER_ADD_REGION';
+
+export const ADMIN_USER_REMOVE_REGION = 'ADMIN_USER_REMOVE_REGION';
+
+export const ADMIN_USER_SAVED = 'ADMIN_USER_SAVED';
+
+export const ADMIN_USER_ADD_TEAM_LEADER = 'ADMIN_USER_ADD_TEAM';
+
+export const ADMIN_USER_REMOVE_TEAM_LEADER = 'ADMIN_USER_REMOVE_TEAM_LEADER';
+
+export const UPDATE_ADMIN_USER = {
+  request: () => 'UPDATE_ADMIN_USER_REQUEST',
+  success: () => 'UPDATE_ADMIN_USER_SUCCESS',
+};
+
+export const CREATE_ADMIN_USER = {
+  request: () => 'CREATE_ADMIN_USER_REQUEST',
+  success: () => 'CREATE_ADMIN_USER_SUCCESS',
+};
+
+export const ADMIN_USER_ROLE_CHANGE = 'ADMIN_USER_ROLE_CHANGE';
+
+export const ADMIN_SEARCH_QUERY_UPDATE = 'ADMIN_SEARCH_QUERY_UPDATE';
+
+export const FETCH_ADMIN_ADVERTISERS = {
+  request: () => 'FETCH_ADMIN_ADVERTISERS_REQUEST',
+  success: () => 'FETCH_ADMIN_ADVERTISERS_SUCCESS',
+};
+
+export const FETCH_ADMIN_ADVERTISER = {
+  request: () => 'FETCH_ADMIN_ADVERTISER_REQUEST',
+  success: () => 'FETCH_ADMIN_ADVERTISER_SUCCESS',
+};
+
+export const ADMIN_ADVERTISER_EDIT_SUBADVERTISER =
+  'ADMIN_ADVERTISER_EDIT_SUBADVERTISER';
+
+export const ADMIN_ADVERTISER_ADD_SUBADVERTISER =
+  'ADMIN_ADVERTISER_ADD_SUBADVERTISER';
+
+export const ADMIN_ADVERTISER_REMOVE_SUBADVERTISER =
+  'ADMIN_ADVERTISER_REMOVE_SUBADVERTISER';
+
+export const UPDATE_ADMIN_ADVERTISER = {
+  request: () => 'UPDATE_ADMIN_ADVERTISER_REQUEST',
+  success: () => 'UPDATE_ADMIN_ADVERTISER_SUCCESS',
+};
+
+export const FETCH_ADMIN_AGENCIES = {
+  request: () => 'FETCH_ADMIN_AGENCIES_REQUEST',
+  success: () => 'FETCH_ADMIN_AGENCIES_SUCCESS',
+};
+
+export const FETCH_YEARS = {
+  request: () => 'FETCH_YEARS_REQUEST',
+  success: () => 'FETCH_YEARS_SUCCESS',
+};
+
+export const ADMIN_ADVERTISER_SAVED = 'ADMIN_ADVERTISER_SAVED';
+
+export const ADMIN_ADVERTISER_ADD_ASSOCIATION =
+  'ADMIN_ADVERTISER_ADD_ASSOCIATION';
+
+export const ADMIN_ADVERTISER_EDIT_ASSOCIATION =
+  'ADMIN_ADVERTISER_EDIT_ASSOCIATION';
+
+export const ADMIN_ADVERTISER_REMOVE_ASSOCIATION =
+  'ADMIN_ADVERTISER_REMOVE_ASSOCIATION';
+
+export const CREATE_ADMIN_ADVERTISER = {
+  request: () => 'CREATE_ADMIN_ADVERTISER_REQUEST',
+  success: () => 'CREATE_ADMIN_ADVERTISER_SUCCESS',
+};
+
+export const ADMIN_ADVERTISER_CLEAN = 'ADMIN_ADVERTISER_CLEAN';
+
+export const ADMIN_ADVERTISER_EDIT = 'ADMIN_ADVERTISER_EDIT';
+
+export const FETCH_ADMIN_AGENCY = {
+  request: () => 'FETCH_ADMIN_AGENCY_REQUEST',
+  success: () => 'FETCH_ADMIN_AGENCY_SUCCESS',
+};
+
+export const ADMIN_AGENCY_CLEAN = 'ADMIN_AGENCY_CLEAN';
+
+export const ADMIN_AGENCIES_UPDATE_HOLDINGCO =
+  'ADMIN_AGENCIES_UPDATE_HOLDINGCO';
+
+export const UPDATE_ADMIN_AGENCY = {
+  request: () => 'UPDATE_ADMIN_AGENCY_REQUEST',
+  success: () => 'UPDATE_ADMIN_AGENCY_SUCCESS',
+};
+
+export const ADMIN_AGENCY_SAVED = 'ADMIN_AGENCY_SAVED';
+
+export const ADMIN_AGENCY_EDIT = 'ADMIN_AGENCY_EDIT';
+
+export const CREATE_ADMIN_AGENCY = {
+  request: () => 'CREATE_ADMIN_AGENCY_REQUEST',
+  success: () => 'CREATE_ADMIN_AGENCY_SUCCESS',
+};
+
+export const FETCH_ADMIN_HOLDINGCOS = {
+  request: () => 'FETCH_ADMIN_HOLDINGCOS_REQUEST',
+  success: () => 'FETCH_ADMIN_HOLDINGCOS_SUCCESS',
+};
+
+export const FETCH_ADMIN_HOLDINGCO = {
+  request: () => 'FETCH_ADMIN_HOLDINGCO_REQUEST',
+  success: () => 'FETCH_ADMIN_HOLDINGCO_SUCCESS',
+};
+
+export const ADMIN_HOLDINGCO_CLEAN = 'ADMIN_HOLDINGCO_CLEAN';
+
+export const ADMIN_HOLDINGCOS_UPDATE_HOLDINGCO =
+  'ADMIN_HOLDINGCOS_UPDATE_HOLDINGCO';
+
+export const UPDATE_ADMIN_HOLDINGCO = {
+  request: () => 'UPDATE_ADMIN_HOLDINGCO_REQUEST',
+  success: () => 'UPDATE_ADMIN_HOLDINGCO_SUCCESS',
+};
+
+export const ADMIN_HOLDINGCO_SAVED = 'ADMIN_HOLDINGCO_SAVED';
+
+export const ADMIN_HOLDINGCO_EDIT = 'ADMIN_HOLDINGCO_EDIT';
+
+export const CREATE_ADMIN_HOLDINGCO = {
+  request: () => 'CREATE_ADMIN_HOLDINGCO_REQUEST',
+  success: () => 'CREATE_ADMIN_HOLDINGCO_SUCCESS',
+};
+
+export const ADMIN_HOLDINGCO_ADD_AGENCY = 'ADMIN_HOLDINGCO_ADD_AGENCY';
+
+export const ADMIN_HOLDINGCO_REMOVE_AGENCY = 'ADMIN_HOLDINGCO_REMOVE_AGENCY';
+
+export const ADMIN_USER_ROLE_SIDEBAR_UPDATE = 'ADMIN_USER_ROLE_SIDEBAR_UPDATE';
+
+export const ADMIN_USER_CLEAR_TEAMS = 'ADMIN_USER_CLEAR_TEAMS';
+
+export const CHANGE_REVENUE_DATA = 'CHANGE_REVENUE_DATA';
+
+export const ADD_REVENUE_DATA = 'ADD_REVENUE_DATA';
+
+export const CANCEL_ADD_REVENUE_DATA = 'CANCEL_ADD_REVENUE_DATA';
+
+export const CLEAN_ADD_PENDING_REVENUE_DATA = 'CLEAN_ADD_PENDING_REVENUE_DATA';
+
+export const CLEAN_EMPTY_REVENUE_DATA = 'CLEAN_EMPTY_REVENUE_DATA';
+
+export const FETCH_REVENUE_FOR_YEAR = {
+  request: () => 'FETCH_REVENUE_FOR_YEAR_REQUEST',
+  success: () => 'FETCH_REVENUE_FOR_YEAR_SUCCESS',
+};
+
+export const UPDATE_REVENUE_ITEM = {
+  request: () => 'UPDATE_REVENUE_ITEM_REQUEST',
+  success: () => 'UPDATE_REVENUE_ITEM_SUCCESS',
+  error: () => 'UPDATE_REVENUE_ITEM_ERROR',
+};
+
+export const ADD_REVENUE_ITEM = {
+  request: () => 'ADD_REVENUE_ITEM_REQUEST',
+  success: () => 'ADD_REVENUE_ITEM_SUCCESS',
+  error: () => 'ADD_REVENUE_ITEM_ERROR',
+};
+
+export const FETCH_FILTER_2 = {
+  request: () => 'FETCH_FILTER_2_REQUEST',
+  success: () => 'FETCH_FILTER_2_SUCCESS',
+};
+
+export const OPEN_MODAL = 'OPEN_MODAL';
+
+export const CLOSE_MODAL = 'CLOSE_MODAL';
+
+export const TRIGGER_ERROR_BANNER = 'TRIGGER_ERROR_BANNER';
+
+export const CLOSE_ERROR_BANNER = 'CLOSE_ERROR_BANNER';
+
+export const FETCH_CONNECTS_FOR_YEAR = {
+  request: () => 'FETCH_CONNECTS_FOR_YEAR_REQUEST',
+  success: () => 'FETCH_CONNECTS_FOR_YEAR_SUCCESS',
+  error: () => 'FETCH_CONNECTS_FOR_YEAR_ERROR',
+};
+
+export const RESET_SALES_ENTRY_HISTORY = 'RESET_SALES_ENTRY_HISTORY';

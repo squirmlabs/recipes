@@ -1,0 +1,59 @@
+@import '../../styles/_dependencies';
+
+.dataNote {
+    position: absolute;
+    right: 5px;
+    top: 100%;
+    text-align: center;
+    background: #ffd;
+    box-shadow: 0 2px 4px rgba($black, 0.4);
+    border-radius: 0 0 4px 4px;
+    padding: 1rem;
+    z-index: 150;
+
+    textarea {
+        display: block;
+        width: 400px;
+        max-width: 400px;
+        min-width: 400px;
+        height: 100px;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+
+    button {
+        float: none;
+        padding: 0.25rem 0;
+        color: $white;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        margin-left: 1rem;
+        width: 110px;
+
+        &.save {
+            background-color: $brand-blue;
+
+            &:hover {
+                background-color: lighten($brand-blue, 10%);
+            }
+
+            &:active {
+                background-color: lighten($brand-blue, 15%);
+            }
+        }
+
+        &.cancel {
+            background-color: grey;
+
+            &:hover {
+                background-color: lighten(grey, 10%);
+            }
+
+            &:active {
+                background-color: lighten(grey, 15%);
+            }
+        }
+    }
+}

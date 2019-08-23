@@ -1,0 +1,7 @@
+{
+  "baseUrl": "http://uui-qa.com:3000",
+  "api": {
+    "enable": true,
+    "url": "http://uui-qa.com:3000/api/"
+  }
+}

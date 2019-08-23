@@ -1,0 +1,35 @@
+@import '../../../styles/_dependencies';
+
+.List {
+}
+
+.ListItem {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 18px;
+    padding: 20px 15px;
+    font-family: 'lato';
+    border-bottom: 1px solid $listBorderColor;
+    border-right: 2px solid $body-bg;
+    background-color: $headerBg;
+
+    i {
+        color: #bbb;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: $listBorderColor;
+    }
+}
+
+.ListItemSelected {
+    @extend .ListItem;
+    font-weight: bold;
+    border-right: 2px solid $brand-blue;
+}
+
+.ListItemDisabled {
+    color: #999999;
+}

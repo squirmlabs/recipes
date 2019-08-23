@@ -1,0 +1,15 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "api": {
+    "enable": true,
+    "internalApi": "http://localhost:3000/api/",
+    "externalApi": "https://uui-api-dev.com"
+  },
+  "session": {
+    "cookieDomain": "localhost",
+    "maxAge": 3600000,
+    "cookiePrefix": "",
+    "path": "/",
+    "httpOnly": true
+  }
+}

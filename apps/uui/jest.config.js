@@ -1,0 +1,30 @@
+module.exports = {
+  setupTestFrameworkScriptFile: '<rootDir>/config/jest/setupTestFramework.js',
+  collectCoverageFrom: ['src/**/*.{js,jsx}', '!src/index.js'],
+  setupFiles: ['<rootDir>/config/jest/browserMocks.js'],
+  coverageThreshold: {
+    global: {
+      branches: 30,
+      functions: 25,
+      lines: 35,
+    },
+  },
+  moduleNameMapper: {
+    '^.+\\.(scss)$': 'identity-obj-proxy',
+    '@Analytics': '<rootDir>/src/shared/components/Analytics.jsx',
+    '@App': '<rootDir>/src/app/App.jsx',
+    '@app/(.*)$': '<rootDir>/src/app/$1',
+    '@Main': '<rootDir>/src/app/main.jsx',
+    '@BaseActions': '<rootDir>/src/shared/redux/baseActions.js',
+    '@BaseComponent': '<rootDir>/src/shared/components/BaseComponent.jsx',
+    '@Configuration': '<rootDir>/config',
+    '@ConfigureStore': '<rootDir>/src/shared/redux/configureStore.js',
+    '@Constants/(.*)$': '<rootDir>/rc/shared/constants/$1',
+    '@Error/(.*)$': '<rootDir>/src/shared/components/error/$1',
+    '@Form/(.*)$': '<rootDir>/src/shared/components/form/$1',
+    '@Helpers/(.*)$': '<rootDir>/src/shared/helpers/$1',
+    '@Layout/(.*)$': '<rootDir>/src/shared/components/layout/$1',
+    '@Ui/(.*)$': '<rootDir>/src/shared/components/ui/$1',
+    '@Utils/(.*)$': '<rootDir>/src/shared/utils/$1',
+  },
+};

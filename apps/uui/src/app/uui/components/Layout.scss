@@ -1,0 +1,115 @@
+@import '../../../shared/styles/_dependencies';
+
+$borderRadius: 8px;
+
+.layout {
+    @include print {
+        display: block;
+    }
+
+    .error {
+        text-align: center;
+        margin-top: 100px;
+        font-size: 20px;
+
+        h1 {
+            font-size: 40px;
+        }
+
+        a {
+            color: #269;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    }
+
+    .admin {
+        padding: 10px;
+        @include squirmlabsForms;
+    }
+
+    .adminInactive {
+        @extend .admin;
+        @include disabledContainer;
+    }
+
+    .innerAdminSection {
+        display: flex;
+        flex-direction: column;
+        border-radius: $borderRadius;
+        width: 100%;
+        height: calc(100vh - 85px);
+    }
+
+    .newForm {
+        @include dashboardBox();
+        background-color: #fff;
+        width: 345px;
+        position: fixed;
+        top: 75px;
+        right: -350px;
+        border-radius: 0;
+        margin: 0;
+        height: 100%;
+        transition: all 0.2s ease-out;
+    }
+
+    .newFormActive {
+        @extend .newForm;
+        box-shadow: -3px 0 4px 0 rgba(0, 0, 0, 0.16);
+        right: 0;
+    }
+
+    .navSection {
+        align-items: center;
+        width: 100%;
+        padding: 0px;
+        height: 64px;
+        margin-bottom: 3px;
+        padding-left: 15px;
+    }
+
+    @include mobile {
+        .navSection {
+            padding: 0 5px;
+        }
+    }
+
+    .nestedRoutes {
+        background-color: white;
+        width: 100%;
+        height: calc(100% - 65px);
+        border-bottom-left-radius: $borderRadius;
+        border-bottom-right-radius: $borderRadius;
+
+        aside,
+        section {
+            border-bottom-left-radius: $borderRadius;
+            border-bottom-right-radius: $borderRadius;
+        }
+    }
+
+    .errorBanner {
+        position: absolute;
+        top: 66px;
+        left: 0;
+        display: flex;
+        height: 40px;
+        width: 100vw;
+        background-color: #f4e9e9;
+        z-index: 8;
+        border-bottom: 2px solid #d0021b;
+        display: flex;
+        align-items: center;
+        padding: 0 18px;
+        font-size: 16px;
+        color: #333333;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+
+        .errorBannerTitle {
+            color: #b71b1b;
+            margin-right: 4px;
+            font-weight: bold;
+        }
+    }
+}

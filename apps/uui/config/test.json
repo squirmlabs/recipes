@@ -1,0 +1,8 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "api": {
+    "enable": true,
+    "internalApi": "http://localhost:3000/api/",
+    "externalApi": "http://uui-api-qe.com/api/"
+  }
+}

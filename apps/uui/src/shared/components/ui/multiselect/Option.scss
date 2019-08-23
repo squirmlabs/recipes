@@ -1,0 +1,25 @@
+.option {
+    display: flex;
+    align-items: flex-start;
+    font-size: 14px;
+    line-height: 18px;
+    color: #444444;
+    padding: 6px 8px;
+
+    > input {
+        margin-top: -1px;
+    }
+
+    &:hover {
+        background-color: #f6f6f6;
+    }
+
+    &:hover,
+    > *:hover {
+        cursor: pointer;
+    }
+
+    label {
+        margin-left: 8px;
+    }
+}

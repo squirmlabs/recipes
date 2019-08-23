@@ -1,0 +1,34 @@
+{
+  "appName": "uui",
+  "serverPort": 3000,
+  "cache": {
+    "host": "127.0.0.1",
+    "port": 6379,
+    "expirationTime": 3600
+  },
+  "views": {
+    "engine": ".hbs",
+    "extension": ".hbs",
+    "layout": "main"
+  },
+  "security": {
+    "secret": ""
+  },
+  "allowedApps": ["uui"],
+  "whitelist": [
+    "/__webpack_hmr",
+    "/__webpack_hmr&reload=true",
+    "/",
+    "/api/uui/filter",
+    "/api/uui/me",
+    "/api/uui/me/preferences",
+    "/api/uui/admin/users",
+    "/api/uui/admin/users/*",
+    "/app/uui.bundle.js",
+    "/app/uui.bundle.js.map",
+    "/app/vendor.bundle.js",
+    "/app/vendor.bundle.js.map",
+    "/health",
+    "/info",
+  ]
+}

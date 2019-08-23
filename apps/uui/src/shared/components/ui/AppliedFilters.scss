@@ -1,0 +1,22 @@
+@import '../../styles/_dependencies';
+
+.filtersApplied {
+    color: #666;
+    font-size: 11px;
+    width: 100%;
+    display: flex;
+    padding-top: 4px;
+
+    em {
+        display: inline-block;
+    }
+
+    @include print {
+        white-space: normal;
+        margin-bottom: 10px;
+
+        em {
+            margin-left: 0px;
+        }
+    }
+}

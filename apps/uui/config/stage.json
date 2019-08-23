@@ -1,0 +1,15 @@
+{
+  "baseUrl": "https://uui-stage.com",
+  "api": {
+    "enable": true,
+    "internalApi": "https://uui-stage.com/api/",
+    "externalApi": "https://uui-api-stage.com/"
+  },
+  "session": {
+    "cookieDomain": "uui-stage.com",
+    "maxAge": 3600000,
+    "cookiePrefix": "",
+    "path": "/",
+    "httpOnly": true
+  }
+}

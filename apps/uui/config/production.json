@@ -1,0 +1,15 @@
+{
+  "baseUrl": "https://uui.com/",
+  "api": {
+    "enable": true,
+    "internalApi": "https://uui.com/api/",
+    "externalApi": "https://api.uui.com"
+  },
+  "session": {
+    "cookieDomain": "uui.com",
+    "maxAge": 3600000,
+    "cookiePrefix": "",
+    "path": "/",
+    "httpOnly": true
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../../styles/_dependencies';
+
+.logo {
+    h1 {
+        margin: auto;
+
+        img {
+            display: block;
+            width: 290px;
+            padding: 9px 0px 0px 0px;
+
+            @include tablet() {
+                max-width: 65vw;
+                height: auto;
+            }
+
+            @include mobile {
+                max-width: 56vw;
+            }
+        }
+    }
+
+    @include print {
+        display: none;
+    }
+}

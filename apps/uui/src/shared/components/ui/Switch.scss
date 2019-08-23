@@ -1,0 +1,79 @@
+@import '../../styles/_dependencies';
+
+.switch {
+    margin: 0 10px;
+
+    *,*:before {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        /*transition*/
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
+        outline: none;
+        font-family: Helvetica Neue,helvetica,arial,verdana,sans-serif;
+    }
+    .iosToggle,.iosToggle:active{
+        position: absolute;
+        top: -5000px;
+        height: 0;
+        width: 0;
+        opacity: 0;
+        border: none;
+        outline: none;
+    }
+    .checkboxLabel{
+        display: block;
+        position: relative;
+        padding: 10px;
+        font-size: 12px;
+        line-height: 20px;
+        width: 40px;
+        height: 20px;
+        will-change: box-shadow;
+        /*border-radius*/
+        -webkit-border-radius: 18px;
+        -moz-border-radius: 18px;
+        border-radius: 18px;
+        background: #cdd6e2;
+        cursor: pointer;
+    }
+    .checkboxLabel:before{
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        line-height: 17px;
+        text-indent: 40px;
+        height: 20px;
+        width: 20px;
+        will-change: left, box-shadow;
+        /*border-radius*/
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        top: 0px;
+        left: 1px;
+        right: auto;
+        background: white;
+        /*box-shadow*/
+        -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2),0 0 0 1px #dddddd;
+        -moz-box-shadow: 0 1px 3px rgba(0,0,0,.2),0 0 0 1px #dddddd;
+        box-shadow: 0 1px 3px rgba(0,0,0,.2),0 0 0 1px #dddddd;
+    }
+    .iosToggle:checked + .checkboxLabel{
+        /*box-shadow*/
+        -webkit-box-shadow: inset 0 0 0 20px #95e783;
+        -moz-box-shadow: inset 0 0 0 20px #95e783;
+        box-shadow: inset 0 0 0 20px #95e783;
+    }
+    .iosToggle:checked + .checkboxLabel:before{
+        left: calc(100% - 19px);
+        /*box-shadow*/
+        -webkit-box-shadow: 0 0 0 2px transparent,0 1px 3px rgba(0,0,0,.3);
+        -moz-box-shadow: 0 0 0 2px transparent,0 1px 3px rgba(0,0,0,.3);
+        box-shadow: 0 0 0 2px transparent,0 1px 3px rgba(0,0,0,.3);
+    }
+}

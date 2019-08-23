@@ -1,0 +1,15 @@
+.hiddenShow {
+  visibility: visible;
+  &.isAbsolute {
+    position: absolute;
+    bottom: -24px;
+  }
+  
+}
+
+.hiddenHide {
+  visibility: hidden;
+  &.isDisplayNone {
+    display: none
+  }
+}
