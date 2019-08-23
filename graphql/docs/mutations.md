@@ -1,19 +1,10 @@
-import express from 'express';
+# Mutations
 
-// GraphQL modules
-import expressGraphQL from 'express-graphql';
-import { buildSchema } from 'graphql';
+Mutations are also essential because they help us to modify our data. Let's implement a mutation and update a contact by passing the ID and the fields we want to change.
 
-// Contacts Data
-import { contacts } from './data/contacts';
+We need to add our mutation definition and create the function to update our contact; our code should look like this:
 
-// Server environment variables
-const PORT = process.env.PORT || 3000;
-
-// Express Application
-const app = express();
-
-// Creating our GraphQL Schema
+```js
 const schema = buildSchema(`
   type Query {
     contact(id: Int!): Contact
@@ -37,6 +28,11 @@ const schema = buildSchema(`
     email: String
   }
 `);
+```
+
+### Methods
+
+```js
 
 // Data methods
 const methods = {
@@ -70,6 +66,9 @@ const methods = {
     return 'Hello world!';
   }
 };
+```
+
+```js
 
 // Root has the methods we will execute to get the data
 const root = {
@@ -78,16 +77,4 @@ const root = {
   updateContact: methods.updateContact,
   hello: methods.hello
 };
-
-// GraphQL middleware
-app.use(
-  '/graphql',
-  expressGraphQL({
-    schema,
-    rootValue: root,
-    graphiql: true // This enables the GraphQL browser's IDE
-  })
-);
-
-// Running our server
-app.listen(PORT, () => console.log(`Running server on port ${PORT}`));
+```

@@ -184,3 +184,73 @@ app.use(
 app.listen(PORT, () => console.log(`Running server on port ${PORT}`));
 ```
 
+## Using GraphiQL
+
+Create a query and add a query variable for our `contactId` to get a single contact:
+
+```gql
+query getContact($contactId: Int!) {
+  contact(id: $contactId) {
+    name
+    phone
+    email
+  }
+}
+```
+
+```query variables
+{
+  "contactId": 1
+}
+```
+
+Create a query for getContacts add a query variable for our `contactName`. If we send John as the contactName, the query will return the two rows we
+have with the names John Smith and John Brown. Also, if we send an empty value, we are going to get all the contacts:
+
+```gql
+query getContacts($contactName: String!) {
+  contact(name: $contactName) {
+    name
+    phone
+    email
+  }
+}
+```
+
+```query variables
+{
+  "contactName": "John"
+}
+```
+
+```query variables
+{
+  "contactName": ""
+}
+```
+
+## Using Fragments
+
+Fragments are used to share fields between `queries`, `mutations`, and `subscriptions`.
+
+
+```gql
+
+fragment contactFields on Contact {
+  name
+  phone
+  email
+}
+
+query getContactsFragments($contactId1: Int!, $contactId2: Int!) {
+  contact1: contact(id: $contactId1) {
+    ...contactFields
+  }
+  contact2: contact(id: $contactId2) {
+    ...contactFields
+  }
+}
+
+```
+
+As you can see, we define our fragment with the fields we want to get and then in both queries (contact1 and contact2), we re-use the same fragment (contactFields). In the query variables, we pass the values of the contacts we want to get data.
