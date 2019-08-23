@@ -44,16 +44,26 @@ export default function serverRender() {
     const store = configureStore({
       initialState: initialState(req, res),
       appName: currentApp,
-      reducer: appReducer
+      reducer: appReducer,
     });
 
-    const promises = appRoutes.server.length > 0 && appRoutes.server.reduce((acc, route) => {
-      if (matchPath(req.url, route) && route.component && route.component.initialAction) {
-        acc.push(Promise.resolve(store.dispatch(route.component.initialAction('server', req))));
-      }
+    const promises =
+      appRoutes.server.length > 0 &&
+      appRoutes.server.reduce((acc, route) => {
+        if (
+          matchPath(req.url, route) &&
+          route.component &&
+          route.component.initialAction
+        ) {
+          acc.push(
+            Promise.resolve(
+              store.dispatch(route.component.initialAction('server', req)),
+            ),
+          );
+        }
 
-      return acc;
-    }, []);
+        return acc;
+      }, []);
 
     Promise.all(promises)
       .then(() => {
@@ -68,7 +78,7 @@ export default function serverRender() {
               context={context}
               routes={appRoutes}
             />
-          </Provider>
+          </Provider>,
         );
 
         const helmet = Helmet.renderStatic();
@@ -76,13 +86,15 @@ export default function serverRender() {
         if (context.url) {
           res.redirect(301, context.url);
         } else {
-          res.send(html({
-            currentApp,
-            markup,
-            initialState,
-            isNotLocal: !$isLocal(),
-            helmet
-          }));
+          res.send(
+            html({
+              currentApp,
+              markup,
+              initialState,
+              isNotLocal: !$isLocal(),
+              helmet,
+            }),
+          );
         }
       })
       .catch(e => {
