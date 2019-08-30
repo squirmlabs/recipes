@@ -1,5 +1,5 @@
-import './switch.styles.css'
-import React from 'react'
+import './switch.styles.css';
+import React from 'react';
 
 // STOP! You should not have to change anything in this file to
 // make it through the workshop. If tests are failing because of
@@ -9,14 +9,14 @@ import React from 'react'
 // (if we've gotten to that part)
 class Switch extends React.Component {
   render() {
-    const {on, className = '', ...props} = this.props
+    const { on, className = '', ...props } = this.props;
     const btnClassName = [
       className,
       'toggle-btn',
-      on ? 'toggle-btn-on' : 'toggle-btn-off',
+      on ? 'toggle-btn-on' : 'toggle-btn-off'
     ]
       .filter(Boolean)
-      .join(' ')
+      .join(' ');
     return (
       <div>
         <input
@@ -27,14 +27,10 @@ class Switch extends React.Component {
             // changing is handled by clicking the button
           }}
         />
-        <button
-          className={btnClassName}
-          aria-label="Toggle"
-          {...props}
-        />
+        <button className={btnClassName} aria-label="calendarToggle" {...props} />
       </div>
-    )
+    );
   }
 }
 
-export {Switch}
+export { Switch };
