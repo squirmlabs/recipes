@@ -549,5 +549,6 @@ importCsvFromRestApi(url)
 
 > Importing CSV data from a REST API
 
-This brings us to the end of loading and parsing data from text files. 
+This brings us to the end of loading and parsing data from text files.
+
 > Note that other data formats exist that we might need to load, but here we’ve only used two of the most common formats: CSV and JSON. In practice, you might also need to handle XML files, YAML files, and many more—but any new format you can think to add will plug into your data pipeline through the CDR.
