@@ -45,6 +45,29 @@ you want to detect and report errors.
 
 ![alt text](https://i.imgur.com/FUIDkWe.png "An error aborts the promise chain and invokes the error handler.")
 
+## Wrapping asynchronous operations in promises
+
+We can use promises even when they aren’t directly supported by the API we’re using. We just have to do the conversion ourselves.
+
+![alt text](https://i.imgur.com/jV2Ed7N.png "A function called readFilePromise that wraps Node’s readFile function")
+
+The `readFilePromise` function creates and returns a `Promise` object. We can then
+interact with this promise to manage the async operation.
+
+We instantiate a Promise object with an anonymous function that initiates the asynchronous file loading operation. The anonymous function is passed two parameters.
+
+The first parameter is a `resolve` function that we call when the asynchronous operation
+has completed and we’re ready to resolve the promise. This will trigger the next then
+handler that is chained to the promise.
+
+The second parameter is a `reject` function that we can call if an error occurs. We can use this to fail the promise and trigger the closest catch handler in the promise chain:
+
+![alt text](https://i.imgur.com/4bhL2eV.png "This technique for wrapping a callback-based asynchronous function in a promise can easily be applied to any situation where you need to do such a conversion.")
+
+A general pattern can be applied to any situation where you need to use promises.
+
+![alt text](https://i.imgur.com/xnDdhlc.png "This technique for wrapping a callback-based asynchronous function in a promise can easily be applied to any situation where you need to do such a conversion.")
+
 ## Scope
 
 - Only the promise chain itself is asynchronous
