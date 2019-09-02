@@ -552,3 +552,86 @@ importCsvFromRestApi(url)
 This brings us to the end of loading and parsing data from text files.
 
 > Note that other data formats exist that we might need to load, but here we’ve only used two of the most common formats: CSV and JSON. In practice, you might also need to handle XML files, YAML files, and many more—but any new format you can think to add will plug into your data pipeline through the CDR.
+
+## Importing Data From Databases
+
+Databases are often an integral part of our data pipeline and necessary to efficiently and effectively work with large amounts of data. Databases are generally accessed using a network protocol using a third-party access library, as shown below. We’ll focus on two of the most common: MongoDB and MySQL.
+
+![alt text](https://i.imgur.com/2ZWGwaZ.png "Importing from a database to the CDR")
+
+> Importing from a database to the CDR
+
+### Importing data from MongoDB
+
+MongoDB is a prevalent NoSQL database, and it offers a good mix of convenience, flexibility, and performance. MongoDB, being NoSQL, is schema-free. MongoDB doesn’t impose a fixed schema on your data, so we don’t need to predefine the structure of the database.
+
+MongoDB allows us to throw the data into the database and save questions about the structure for later. Using MongoDB doesn’t mean we have unstructured data—far from it; we can easily express structure in MongoDB, but it means that we don’t have to worry about defining that structure up front. As with any data importing job, we should first look at the data before writing the import code.
+
+![alt text](https://i.imgur.com/ESZN0Cd.png "Importing from MongoDB earthquakes database to the CDR")
+
+> Importing from MongoDB earthquakes database to the CDR
+
+
+#### Sixth function to add to our toolkit
+
+It uses the MongoDB `find` function to import data from a MongoDB collection to the core data representation.
+
+```js
+// toolkit-nodejs/importFromMongoDB.js
+"use strict";
+
+const mongo = require('promised-mongo');
+
+function importFromMongoDB (db, collectionName) {
+    return db[collectionName].find().toArray();
+};
+
+module.exports = importFromMongoDB;
+```
+
+![alt text](https://i.imgur.com/VVAW2Bj.png "A function to import data from a MongoDB collection (toolkit-nodejs/importFromMongoDB.js)")
+
+> A function to import data from a MongoDB collection (toolkit-nodejs/importFromMongoDB.js)
+
+The following shows how to use the function to import data from the largest `_earthquakes` collection. Run this code and it will retrieve the data from the database and print it to the console for you to check.
+
+```js
+// toolkit-nodejs/usage/importFromMongoDB.js
+'use strict';
+
+const mongo = require('promised-mongo');
+const importFromMongoDB = require('../importFromMongoDB.js');
+
+const db = mongo('localhost:6000/earthquakes', ['largest_earthquakes']);
+
+importFromMongoDB(db, 'largest_earthquakes')
+  .then(data => {
+    console.log(data);
+  })
+  .then(() => db.close())
+  .catch(err => {
+    console.error(err);
+  });
+```
+
+![alt text](https://i.imgur.com/NzkEBVy.png "Importing the largest earthquakes collection from MongoDB")
+
+> Importing the largest earthquakes collection from MongoDB
+
+Note how we connect to the MongoDB database using the connection string `localhost:6000/earthquakes`. This assumes that we’re connecting to a MongoDB database named `earthquakes` running on our `localhost` or on the Vagrant virtual machine. Either way, the MongoDB database instance is mapped to port `6000` on the host.
+
+You must change this connection string to connect to a different database. For example,
+if you installed MongoDB on your local PC (instead of using the Vagrant virtual
+machine), you’ll probably find that MongoDB is using its default port of 27017. 
+
+If that’s the case, you need to use the connection string `localhost:27017/earthquakes`. Considering that localhost and `27017` are defaults, you can even drop those parts and use `earthquakes` as your connection string.
+
+You can also connect to a MongoDB database over the internet by providing a valid
+hostname in the connection string. For example, if you have an internet-accessible
+database available on a machine with host name `my_host.com`, then your connection
+string might look like this: `my_host.com:27017/my_database`.
+
+
+## Resources
+
+- [Data Wrangling with JavaScript](http://bit.ly/2t2cJu2)
