@@ -240,3 +240,79 @@ axios
 > <https://medium.com/@jeffrey.allen.lewis/http-requests-compared-why-axios-is-better-than-node-fetch-more-secure-can-handle-errors-better-39fde869a4a6>
 > <https://medium.com/@kartikag01/fetch-vs-axios-vs-request-promise-vs-superagent-8e78fa358d17>
 > <https://www.npmtrends.com/axios-vs-request-promise-vs-superagent>
+
+
+## Parsing JSON text data
+
+Now that we have loaded data into memory, we must decide on how to decode the content.
+
+Working with raw text data can be painful, time-consuming, and error-prone; however, when we work with a common or standardized data format such as JSON or CSV, we have the advantage of using an existing library to import or export the data.
+
+JSON is the first data format we’ll parse from our text data. It’s one of the most common
+data formats you’ll encounter when working with JavaScript. It’s simple to understand
+and goes hand-in-hand with JavaScript. The tools you need for working with JSON
+are built into the JavaScript API, and that makes JSON a particularly appealing format
+for us.
+
+### Parsing A JSON Text File
+
+> Before we attempt to import our data file, it’s a good idea to open the file in a text editor and visually verify that the data is what we think it is. There’s no point trying to work with a data file that’s corrupted or has other problems, and we can easily and quickly check for this before we start coding. This won’t catch all conceivable issues, but you might be surprised how many data issues you can spot by first doing a simple visual check.
+
+![alt text](https://i.imgur.com/awLFswY.png "Shows earthquakes.json loaded in VSCode")
+
+> Shows earthquakes.json loaded in VSCode
+
+Let’s now import `earthquakes.json` to the core data representation. This is particularly
+easy using the tools provided by `Node.js` and the `JavaScript API`. 
+
+The JSON format is a serialized JavaScript data structure, so it lines up in a direct way with the core data representation. 
+
+To read the file, we:
+1. use our toolkit function file.read. 
+2. Then we use the built-in JavaScript function JSON.parse to decode the text data to the CDR. 
+
+The following is a new function to import a JSON file to the core data representation. We read the file content using our function `file.read` and then parse the JSON data using `JSON.parse`.
+
+```js
+"use strict";
+
+const importJsonFile = require('./toolkit-nodejs/importJSONFile.js');
+
+importJsonFile("./data/earthquakes.json")
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.error("An error occurred.");
+    console.error(err.stack);
+  });
+
+```
+
+```js
+// toolkit-nodejs/importJSONFile.js
+'use strict';
+
+const file = require('./file.js');
+
+// Helper function to import a JSON file.
+
+function importJsonFile(filePath) {
+  return file.read(filePath).then(textFileData => {
+    return JSON.parse(textFileData);
+  });
+}
+
+module.exports = importJsonFile;
+
+```
+
+![alt text](https://i.imgur.com/o8zL7p7.png "A function to import a JSON text file (toolkit/importJSONFile.js)")
+
+> A function to import a JSON text file (toolkit/importJSONFile.js)
+
+![alt text](https://i.imgur.com/rAM0yO9.png "Importing a JSON text file to the CDR")
+
+> Importing a JSON text file to the CDR
+
+
