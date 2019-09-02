@@ -61,7 +61,7 @@ CSV file and then code to export the data to the MongoDB database.
 ## Formats 
 
 | Type    | Data Source         | Notes                                                                                                  |
-|---------|---------------------|--------------------------------------------------------------------------------------------------------|
+| ------- | ------------------- | ------------------------------------------------------------------------------------------------------ |
 | JSON    | Text file, REST API | The JSON format is built into JavaScript. It’s convenient   and most REST APIs use it.                 |
 | CSV     | Text file, REST API | CSV is a more compact format than JSON and is compatible with Excel.                                   |
 | MongoDB | Database            | Flexible and convenient, schema-free database. Ideal when you don’t  yet know the format of your data. |
@@ -86,6 +86,7 @@ Notice the range of data formats that can be imported into the CDR and then the 
 [] Add PostgreSQL, by learning the implementations with node.js
 [] Add Oracle, by learning the implementations with node.js
 [] Add Microsoft SQL, by learning the implementations with node.js
+[] Binary Files, by learning the implementations with node.js
 
 ## Importing Data
 
@@ -95,5 +96,34 @@ That’s usually JSON or CSV, two common text formats. Finish by loading data fr
 
 ### Loading data from text files
 
+![alt text](https://i.imgur.com/H34QxV6.png "Importing a text file to the CDR")
+> Importing a text file to the CDR
 
+The general process of importing a text file to the core data representation is illustrated above. Toward the right of the diagram, notice the pathway branches; this is where we interpret the incoming data as a particular format and decode it to the CDR. 
 
+For the moment, though, let’s load the text file into memory. 
+
+In Node.js, we use the fs.readFile function to read the file’s content into memory.
+
+How we parse the file varies according to the data format, but reading the text file into memory is the same in each case. You can run this code, and it will print the contents of the file earthquakes.csv to the console.
+
+```js
+"use strict";
+
+const fs = require('fs');
+
+fs.readFile("./data/earthquakes.csv", "utf8",
+  (err, textFileData) => {
+    if (err) {
+      console.error("An error occurred!");
+      return;
+    }
+
+    console.log(textFileData);
+  }
+);
+
+```
+
+![alt text](https://i.imgur.com/TKh3EwO.png "Importing a text file to the CDR")
+> Reading a text file into memory

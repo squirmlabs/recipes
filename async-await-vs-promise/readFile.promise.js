@@ -1,6 +1,6 @@
-const bicycle_routes_url = '../data/bicycle_routes.txt';
+const fs = require('fs');
 
-readFilePromise(bicycle_routes_url)
+readFilePromise(__dirname + '/data/earthquakes.csv')
   .then(content => {
     console.log(content);
   })
