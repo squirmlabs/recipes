@@ -494,6 +494,7 @@ from a REST API instead of from a text file. The following listing is a new func
 REST API.
 
 #### Fifth function to add to our toolkit
+
 ```js
 // toolkit-nodejs/importCsvFromRestApi.js
 'use strict';
@@ -525,3 +526,28 @@ module.exports = importCsvFromRestApi;
 
 > A function to import CSV data from a REST API (toolkit-nodejs/importCsvFromRestApi.js)
 
+```js
+// toolkit-nodejs/usage/importCsvFromRestApi.js
+'use strict';
+
+const importCsvFromRestApi = require('../importCsvFromRestApi.js');
+
+const url =
+  'https://earthquake.usgs.gov/fdsnws/event/1/query.csv?starttime=2017-01-01&endtime=2017-03-02&limit=20000';
+
+importCsvFromRestApi(url)
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+
+```
+
+![alt text](https://i.imgur.com/MyHC3wO.png "Importing CSV data from a REST API")
+
+> Importing CSV data from a REST API
+
+This brings us to the end of loading and parsing data from text files. 
+> Note that other data formats exist that we might need to load, but here we’ve only used two of the most common formats: CSV and JSON. In practice, you might also need to handle XML files, YAML files, and many more—but any new format you can think to add will plug into your data pipeline through the CDR.
