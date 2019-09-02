@@ -127,3 +127,36 @@ fs.readFile("./data/earthquakes.csv", "utf8",
 
 ![alt text](https://i.imgur.com/TKh3EwO.png "Importing a text file to the CDR")
 > Reading a text file into memory
+
+### First function to add to the toolkit
+
+For the convenience of managing the asynchronous operation, we’ll wrap this in a promise. Use boilerplate code that you use each time you load a text file. We’ll reuse this code many times throughout our work, so let’s turn it into a reusable toolkit function.
+
+```js
+// file.js
+const fs = require('fs');
+
+function read(filePath) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, 'utf8', (err, textFileData) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve(textFileData);
+    });
+  });
+}
+
+module.exports = {
+  read: read
+};
+```
+
+> This defines a Node.js code module called `file`. For the moment, it contains
+the single function called `read`.
+
+
+![alt text](https://i.imgur.com/dcqoFfG.png "Importing a text file to the CDR")
+
+> A promise-based function to read a text file (toolkit-nodejs/file.js)
