@@ -27,10 +27,23 @@ It automatically weaves together the callbacks and invokes a single final callba
 
 `Catch` is used for error handling. Using promises, we can attach an error handler to the end of our chain. This allows us to share the error hander between all our asynchronous operations, and it will be invoked should any of the operations fail (for example, file 2 fails to load). Visualize promise error handling as a short circuit out of the promise chain. `Catch` allows us to have elegant control over our asynchronous error handling. It gives us back our try/catch statement in the asynchronous world. You can place your error handler anywhere in the chain depending on when you want to detect and report errors.
 
-### Always have at least one error handler
+![alt text](https://i.imgur.com/Ci1FxP9.png "Visualizing a promise chain")
 
-Even if you don’t need error handlers within your promise chain, it’s important to always
-include at least one error handler at the end of your chain. If you don’t do this, you risk errors going unnoticed because you don’t have any code to catch and report them!
+![alt text](https://i.imgur.com/QjcxeKM.png "Executing asynchronous operations in parallel with Promise.all")
+
+![alt text](https://i.imgur.com/0Avv9Sq.png "A more complex example of promises illustrating how then and all can be used to weave complex chains of asynchronous logic.")
+
+![alt text](https://i.imgur.com/lVQeGtx.png "Adding an error handler to a promise chain with catch")
+
+In this example I placed the error handler at the end of the promise chain, although
+in reality you can place your error handler anywhere in the chain depending on when
+you want to detect and report errors.
+
+> Always have at least one error handler 
+
+> Even if you don’t need error handlers within your promise chain, it’s important to always include at least one error handler at the end of your chain. If you don’t do this, you risk errors going unnoticed because you don’t have any code to catch and report them!
+
+![alt text](https://i.imgur.com/FUIDkWe.png "An error aborts the promise chain and invokes the error handler.")
 
 ## Scope
 
