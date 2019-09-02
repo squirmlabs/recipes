@@ -3,7 +3,7 @@
 Tools that you need to move data from place to place.
 
 | Type   | Data Source | Data Format | Tools                     | Methods                      |
-|--------|-------------|-------------|---------------------------|------------------------------|
+| ------ | ----------- | ----------- | ------------------------- | ---------------------------- |
 | Import | Text file   | JSON        | Node.js API               | fs.readfile, JSON.parse      |
 |        |             | CSV         | Node.js API,PapaParse     | fs.readFile, Papa.parse      |
 |        | REST API    | JSON        | request-promise           | request.get                  |
@@ -39,4 +39,22 @@ require any particular sequence of preceding stages.
 > Flexibility is key. We must accept data from other websites and organizations in whatever format they provide it.
 
 > We also want to be a good data sharing citizen, so not only do we make the data available through web pages and visualizations, we also want to make the data available in various machine-readable formats. Put succinctly, we must both import and export a variety of formats into and out of our data pipeline.
+
+The CDR should be simple to understand: after all it’s just a JavaScript array of data. Each array element corresponds to a row in earthquakes.csv. Each array element contains a JavaScript object, or a record if you will, and each field corresponds to a column in earthquakes.csv.
+
+![alt text](https://i.imgur.com/x1XEhde.png "Elements in a JavaScript array correspond to rows in earthquakes.csv.")
+
+> Elements in a JavaScript array correspond to rows in earthquakes.csv.
+
+## Create a data conversion pipeline
+
+To create a data conversion pipeline, we must import from a data format and then
+export to another. As one example, let’s take earthquakes.csv and import it into a MongoDB earthquakes database. To do this, we’ll need code to import the data from the
+CSV file and then code to export the data to the MongoDB database.
+
+![alt text](https://i.imgur.com/mMVolEm.png "Fields in JavaScript objects correspond to columns in earthquakes.csv.")
+
+> Fields in JavaScript objects correspond to columns in earthquakes.csv.
+
+![alt text](https://i.imgur.com/9UZd932.png "Import and export code feeds through the core data representation.")
 
