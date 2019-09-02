@@ -13,17 +13,18 @@ you’re no longer concerned with their order of completion.
 chain of asynchronous operations. We can share error handlers between as many
 asynchronous operations as we need.
 
-## Then
+### Then
 
 Then is used to chain together a sequence of asynchronous operations
 
 ![alt text](https://i.imgur.com/AQCuiAh.png "Executing sequential asynchronous operations with then")
 
-## All
+### All
 
 Promise.all is used to manage asynchronous operations that are running in parallel.
 It automatically weaves together the callbacks and invokes a single final callback. Using all, you no longer need to worry about coordinating multiple callbacks that might be invoked in any order.
-## Catch
+
+### Catch
 
 `Catch` is used for error handling. Using promises, we can attach an error handler to the end of our chain. This allows us to share the error hander between all our asynchronous operations, and it will be invoked should any of the operations fail (for example, file 2 fails to load). Visualize promise error handling as a short circuit out of the promise chain. `Catch` allows us to have elegant control over our asynchronous error handling. It gives us back our try/catch statement in the asynchronous world. You can place your error handler anywhere in the chain depending on when you want to detect and report errors.
 
@@ -45,7 +46,7 @@ you want to detect and report errors.
 
 ![alt text](https://i.imgur.com/FUIDkWe.png "An error aborts the promise chain and invokes the error handler.")
 
-## Wrapping asynchronous operations in promises
+### Wrapping asynchronous operations in promises
 
 We can use promises even when they aren’t directly supported by the API we’re using. We just have to do the conversion ourselves.
 
@@ -68,17 +69,19 @@ A general pattern can be applied to any situation where you need to use promises
 
 ![alt text](https://i.imgur.com/xnDdhlc.png "This technique for wrapping a callback-based asynchronous function in a promise can easily be applied to any situation where you need to do such a conversion.")
 
-## Scope
+## Rules
+
+### Scope
 
 - Only the promise chain itself is asynchronous
 
-## Logic
+### Logic
 
 - Synchronous work can be handled in the same callback
 
 - Multiple promises use Promise.all()
 
-## Error Handling
+### Error Handling
 
 - Then
 
