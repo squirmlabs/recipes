@@ -157,6 +157,28 @@ module.exports = {
 the single function called `read`.
 
 
-![alt text](https://i.imgur.com/dcqoFfG.png "Importing a text file to the CDR")
+![alt text](https://i.imgur.com/dcqoFfG.png "A promise-based function to read a text file (toolkit-nodejs/file.js)")
 
 > A promise-based function to read a text file (toolkit-nodejs/file.js)
+
+#### Usage 
+
+The `file` module is required, and we can now call `file.read` to load `earthquakes.csv` into memory. You can run the code, and it prints the file’s content to the console.
+
+```js
+"use strict";
+
+const file = require('./toolkit-nodejs/file.js');
+
+file.read("./data/earthquakes.csv")
+  .then(textFileData => {
+    console.log(textFileData);
+  })
+  .catch(err => {
+    console.error("An error occurred!");
+  });
+```
+
+![alt text](https://i.imgur.com/vIR3f55.png "Loading a text file with the promise-based read function")
+
+> Loading a text file with the promise-based read function
