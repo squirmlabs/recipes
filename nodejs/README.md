@@ -25,6 +25,8 @@ This is a design pattern for structuring data pipelines. The CDR allows us to pi
 
 CDR is the glue that binds together our data pipeline. The CDR is a shared representation of our data, and its purpose is to allow our pipeline stages to communicate and be cleanly separated with no hard dependencies on each other.
 
+### Abilities of CDR 
+
 > This separation is what allows us to build reusable code modules that we can then rearrange to create other data pipelines.
 
 > The separation of the stages also gives us flexibility—we can restructure our data
@@ -35,4 +37,6 @@ require any particular sequence of preceding stages.
 > Use the CDR to bridge the gap between our import and export code. This allows us to piece together data conversion pipelines from reusable code modules. We can mix and match import and export code to build a pipeline that converts data from any one format to any other.
 
 > Flexibility is key. We must accept data from other websites and organizations in whatever format they provide it.
+
+> We also want to be a good data sharing citizen, so not only do we make the data available through web pages and visualizations, we also want to make the data available in various machine-readable formats. Put succinctly, we must both import and export a variety of formats into and out of our data pipeline.
 
