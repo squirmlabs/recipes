@@ -387,3 +387,5 @@ module.exports = importJsonFromRestApi;
 
 The above code shows how to call `importJsonFromRestApi` to import data from the example
 REST API. Rather than loading the data from a file, it loads it from the REST API.
+
+> The incoming data is reorganized to fit our idea of the CDR. The incoming JSON data isn’t structured exactly how we’d like it to be to fit, so we rewrite on the fly into a tabular format.
