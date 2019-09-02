@@ -276,7 +276,7 @@ The following is a new function to import a JSON file to the core data represent
 ```js
 "use strict";
 
-const importJsonFile = require('./toolkit-nodejs/importJSONFile.js');
+const importJsonFile = require('../importJsonFile.js');
 
 importJsonFile("./data/earthquakes.json")
   .then(data => {
@@ -293,7 +293,7 @@ importJsonFile("./data/earthquakes.json")
 > Importing data from earthquakes.json
 
 ```js
-// toolkit-nodejs/importJSONFile.js
+// toolkit-nodejs/importJsonFile.js
 'use strict';
 
 const file = require('./file.js');
@@ -310,12 +310,24 @@ module.exports = importJsonFile;
 
 ```
 
-![alt text](https://i.imgur.com/o8zL7p7.png "A function to import a JSON text file (toolkit/importJSONFile.js)")
+![alt text](https://i.imgur.com/o8zL7p7.png "A function to import a JSON text file (toolkit/importJsonFile.js)")
 
-> A function to import a JSON text file (toolkit/importJSONFile.js)
+> A function to import a JSON text file (toolkit/importJsonFile.js)
 
 ![alt text](https://i.imgur.com/rAM0yO9.png "Importing a JSON text file to the CDR")
 
 > Importing a JSON text file to the CDR
 > Above shows how to use our new function to import earthquakes.json.
 You can run this code, and the decoded data prints it to the console so that we can visually verify that the data was parsed correctly.
+
+### Parsing JSON Data From A REST API
+
+Importing JSON data from a REST API is similar to importing it from a text file. We need
+to change where the data is loaded from. Instead of using the file.read function, we
+can use our request-promise to load the data from a REST API.
+
+The following shows a new function for our toolkit that imports JSON data from a REST API.
+
+![alt text](https://i.imgur.com/XKgorqs.png "Importing JSON data from a REST API (toolkit-nodejs/importJsonFromRestApi.js)")
+
+> Importing JSON data from a REST API (toolkit-nodejs/importJsonFromRestApi.js)

@@ -1,0 +1,32 @@
+{
+  "name": "toolkit-nodejs",
+  "version": "1.0.0",
+  "description": "CDR toolkit for Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/squirmlabs/toolkit-nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "toolkit",
+    "cdr"
+  ],
+  "author": "squirmlabs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/squirmlabs/toolkit-nodejs/issues"
+  },
+  "homepage": "https://github.com/squirmlabs/toolkit-nodejs#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "nodejs-mysql": "0.1.3",
+    "papaparse": "4.3.3",
+    "promised-mongo": "1.2.0",
+    "request": "2.81.0",
+    "request-promise": "4.2.1"
+  }
+}
