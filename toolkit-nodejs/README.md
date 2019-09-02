@@ -328,6 +328,62 @@ can use our request-promise to load the data from a REST API.
 
 The following shows a new function for our toolkit that imports JSON data from a REST API.
 
+
+```js
+// toolkit-nodejs/usage/importJsonFromRestApi.js
+'use strict';
+
+// Require our "importJsonFromRestApi" toolkit function.
+const importJsonFromRestApi = require('../importJsonFromRestApi.js');
+
+const url =
+  'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson';
+
+// Use our toolkit function to import data from the REST API.
+importJsonFromRestApi(url)
+  .then(data => {
+    // Callback to handle imported data.
+    const earthquakes = data.features.map(feature => {
+      // Restructure incoming data to the CDR.
+      const earthquake = Object.assign({}, feature.properties, {
+        id: feature.id
+      });
+      return earthquake;
+    });
+    // Print the data to the console so that we can verify it.
+    console.log(earthquakes);
+  })
+  .catch(err => {
+    // Handle any error that might have occurred.
+    console.error('An error occurred.');
+    console.error(err.stack);
+  });
+
+```
+
+![alt text](https://i.imgur.com/bbo681O.png "toolkit-nodejs/usage/importJsonFromRestApi")
+
+> toolkit-nodejs/usage/importJsonFromRestApi
+
+```js
+// toolkit-nodejs/importJsonFromRestApi.js
+'use strict';
+
+const request = require('request-promise');
+
+function importJsonFromRestApi(url) {
+  return request.get(url).then(response => {
+    return JSON.parse(response);
+  });
+}
+
+module.exports = importJsonFromRestApi;
+
+```
+
 ![alt text](https://i.imgur.com/XKgorqs.png "Importing JSON data from a REST API (toolkit-nodejs/importJsonFromRestApi.js)")
 
 > Importing JSON data from a REST API (toolkit-nodejs/importJsonFromRestApi.js)
+
+The above code shows how to call `importJsonFromRestApi` to import data from the example
+REST API. Rather than loading the data from a file, it loads it from the REST API.
