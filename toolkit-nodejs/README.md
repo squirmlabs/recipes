@@ -237,7 +237,6 @@ axios
   });
 ```
 
-
-
-
-
+> <https://medium.com/@jeffrey.allen.lewis/http-requests-compared-why-axios-is-better-than-node-fetch-more-secure-can-handle-errors-better-39fde869a4a6>
+> <https://medium.com/@kartikag01/fetch-vs-axios-vs-request-promise-vs-superagent-8e78fa358d17>
+> <https://www.npmtrends.com/axios-vs-request-promise-vs-superagent>
