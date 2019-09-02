@@ -454,7 +454,7 @@ function importCsvFile(filePath) {
 module.exports = importCsvFile;
 ```
 
-![alt text](https://i.imgur.com/itmMtiS.png "A function to import a CSV text file (toolkit/importCsvFile.js)")
+![alt text](https://i.imgur.com/uMX8ocf.png "A function to import a CSV text file (toolkit/importCsvFile.js)")
 
 ![alt text](https://i.imgur.com/IwKU0P8.png "A function to import a CSV text file (toolkit/importCsvFile.js)")
 
