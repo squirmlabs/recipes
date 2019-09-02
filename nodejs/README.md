@@ -58,3 +58,42 @@ CSV file and then code to export the data to the MongoDB database.
 
 ![alt text](https://i.imgur.com/9UZd932.png "Import and export code feeds through the core data representation.")
 
+## Formats 
+
+| Type    | Data Source         | Notes                                                                                                  |
+|---------|---------------------|--------------------------------------------------------------------------------------------------------|
+| JSON    | Text file, REST API | The JSON format is built into JavaScript. It’s convenient   and most REST APIs use it.                 |
+| CSV     | Text file, REST API | CSV is a more compact format than JSON and is compatible with Excel.                                   |
+| MongoDB | Database            | Flexible and convenient, schema-free database. Ideal when you don’t  yet know the format of your data. |
+| MySQL   | Database            | Standard relational database. Mature, robust, and reliable.                                            |
+| GraphQl | Database            | .....                                                                                                  |
+
+We can easily plug a variety of data formats into our workflow as and when we need them.
+
+CSV is here because it’s so common in data analysis projects. JSON is here because it’s so common in JavaScript and most convenient. MongoDB is here to represent the NoSQL class of databases. MySQL is here to represent the SQL class of databases.
+
+Notice the range of data formats that can be imported into the CDR and then the range of data formats that can be exported from it. By wiring together modular import and export code (communicating using the CDR), we can now build a large variety of data conversion pipelines.
+
+![alt text](https://i.imgur.com/jDfaIxa.png "Select from a variety of data formats to build a custom data conversion process.")
+
+> Using the CDR design pattern, we can easily stitch together whatever data conversion we need to import from any data format on the left (f﻿igure 3.5) and export to any on the right.
+
+> Select from a variety of data formats to build a custom data conversion process
+
+[] Add Amazon DynamoDB, by learning the implementations with node.js
+[] Add Cassandra, by learning the implementations with node.js
+[] Add XML, by learning the implementations with node.js
+[] Add PostgreSQL, by learning the implementations with node.js
+[] Add Oracle, by learning the implementations with node.js
+[] Add Microsoft SQL, by learning the implementations with node.js
+
+## Importing Data
+
+Load data from text files and REST APIs. Both are commonly found in business and data science scenarios. After loading text data—either from text file or REST API—we need to parse, or interpret, it according to a particular data format. 
+
+That’s usually JSON or CSV, two common text formats. Finish by loading data from two different types of databases: MongoDB and MySQL.
+
+### Loading data from text files
+
+
+
