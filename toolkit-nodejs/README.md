@@ -182,3 +182,62 @@ file.read("./data/earthquakes.csv")
 ![alt text](https://i.imgur.com/vIR3f55.png "Loading a text file with the promise-based read function")
 
 > Loading a text file with the promise-based read function
+
+#### Loading large files
+
+> What happens when we load a large text file that doesn’t fit in memory?
+> When this happens, Node.js raises an out-of-memory error. Although you might be surprised at how much memory you can get away with, ultimately this can be a big problem.
+
+### Loading data from a REST API
+
+Loading data from a REST (REpresentational State Transfer) API using HTTP (HyperText Transfer Protocol). This is a common way to retrieve data over the internet from a website or web service.
+
+To get data by HTTP, we can use the third-party library `request-promise`. The Node.js API has built-in support for HTTP communication, but its good to use a higher-level library such as `request-promise`. It’s more convenient, and it wraps the operation in a promise for us.
+
+```js
+const request = require('request-promise');
+
+const url =
+  'https://earthquake.usgs.gov' +
+  '/earthquakes/feed/v1.0/summary/significant_month.geojson';
+request
+  .get(url)
+  .then(response => {
+    console.log(response);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+```
+
+![alt text](https://i.imgur.com/E9OEjmt.png "Importing data from a REST API to the CDR")
+
+> Importing data from a REST API to the CDR. Using `request-promise`
+
+![alt text](https://i.imgur.com/8iNEwvZ.png "Retrieving data from a REST API")
+
+> Retrieving data from a REST API. Using `request-promise`
+
+
+We can also use the third-party library `axios`. The usage is very similar
+
+```js
+const axios = require('axios');
+
+const url =
+  'https://earthquake.usgs.gov' +
+  '/earthquakes/feed/v1.0/summary/significant_month.geojson';
+axios
+  .get(url)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+```
+
+
+
+
+
