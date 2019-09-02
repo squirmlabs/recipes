@@ -19,8 +19,15 @@ Tools that you need to move data from place to place.
 
 This is a design pattern for structuring data pipelines. The CDR allows us to piece together flexible data pipelines from reusable code modules. With this design pattern, we can produce an almost infinite variety of data processing and conversion pipelines.
 
-[img]https://i.imgur.com/F1TZg1c.png[/img]
-
 ![alt text](https://i.imgur.com/F1TZg1c.png "A data pipeline with stages that communicate through the core data representation")
 
 > A data pipeline with stages that communicate through the core data representation
+
+CDR is the glue that binds together our data pipeline. The CDR is a shared representation of our data, and its purpose is to allow our pipeline stages to communicate and be cleanly separated with no hard dependencies on each other.
+
+> This separation is what allows us to build reusable code modules that we can then rearrange to create other data pipelines.
+
+> The separation of the stages also gives us flexibility—we can restructure our data
+pipeline by rearranging the stages or by adding and removing stages. These modifications
+are easily made because the stages are only dependent on the CDR, and they don’t
+require any particular sequence of preceding stages.
