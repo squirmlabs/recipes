@@ -31,3 +31,8 @@ CDR is the glue that binds together our data pipeline. The CDR is a shared repre
 pipeline by rearranging the stages or by adding and removing stages. These modifications
 are easily made because the stages are only dependent on the CDR, and they don’t
 require any particular sequence of preceding stages.
+
+> Use the CDR to bridge the gap between our import and export code. This allows us to piece together data conversion pipelines from reusable code modules. We can mix and match import and export code to build a pipeline that converts data from any one format to any other.
+
+> Flexibility is key. We must accept data from other websites and organizations in whatever format they provide it.
+
