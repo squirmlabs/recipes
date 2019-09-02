@@ -288,6 +288,9 @@ importJsonFile("./data/earthquakes.json")
   });
 
 ```
+![alt text](https://i.imgur.com/DoFb2Rb.png "Importing data from earthquakes.json")
+
+> Importing data from earthquakes.json
 
 ```js
 // toolkit-nodejs/importJSONFile.js
@@ -314,5 +317,5 @@ module.exports = importJsonFile;
 ![alt text](https://i.imgur.com/rAM0yO9.png "Importing a JSON text file to the CDR")
 
 > Importing a JSON text file to the CDR
-
-
+> Above shows how to use our new function to import earthquakes.json.
+You can run this code, and the decoded data prints it to the console so that we can visually verify that the data was parsed correctly.
