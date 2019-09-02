@@ -314,9 +314,9 @@ module.exports = importJsonFile;
 
 ```
 
-![alt text](https://i.imgur.com/o8zL7p7.png "A function to import a JSON text file (toolkit/importJsonFile.js)")
+![alt text](https://i.imgur.com/o8zL7p7.png "A function to import a JSON text file (toolkit-nodejs/importJsonFile.js)")
 
-> A function to import a JSON text file (toolkit/importJsonFile.js)
+> A function to import a JSON text file (toolkit-nodejs/importJsonFile.js)
 
 ![alt text](https://i.imgur.com/rAM0yO9.png "Importing a JSON text file to the CDR")
 
@@ -403,7 +403,7 @@ The CSV (comma-separated values) format is a simple format that directly represe
 
 The tools to parse CSV files aren't included in Javascript. We need to install a third-party npm package to help us out with that.
 
-## Parsing A CSV Text File - Papa Parse
+### Parsing A CSV Text File - Papa Parse
 
 A CSV file is a plain old text file: each line of the file is a row of data. Each row is then divided into fields that are separated by commas, hence the name of the data format.
 
@@ -454,11 +454,11 @@ function importCsvFile(filePath) {
 module.exports = importCsvFile;
 ```
 
-![alt text](https://i.imgur.com/uMX8ocf.png "A function to import a CSV text file (toolkit/importCsvFile.js)")
+![alt text](https://i.imgur.com/uMX8ocf.png "A function to import a CSV text file (toolkit-nodejs/importCsvFile.js)")
 
-![alt text](https://i.imgur.com/IwKU0P8.png "A function to import a CSV text file (toolkit/importCsvFile.js)")
+![alt text](https://i.imgur.com/IwKU0P8.png "A function to import a CSV text file (toolkit-nodejs/importCsvFile.js)")
 
-> A function to import a CSV text file (toolkit/importCsvFile.js)
+> A function to import a CSV text file (toolkit-nodejs/importCsvFile.js)
 
 Note the options used with Papa Parse.
 
@@ -484,3 +484,44 @@ importCsvFile("./data/earthquakes.csv")
 ![alt text](https://i.imgur.com/8GpmtKh.png "Importing data from earthquakes.csv with our new toolkit function")
 
 > Importing data from earthquakes.csv with our new toolkit function
+
+### Parsing CSV Data From A REST API - Papa Parse
+
+With CSV, as with JSON, we also have the option of loading CSV from a text file or from
+a REST API. To do this, we replace `file.read` with `request-promise` to load the data
+from a REST API instead of from a text file. The following listing is a new function
+`importCsvFromRestApi` that does this, and we can use it to import CSV data from a
+REST API.
+
+#### Fifth function to add to our toolkit
+```js
+// toolkit-nodejs/importCsvFromRestApi.js
+'use strict';
+
+const request = require('request-promise');
+const papa = require('papaparse');
+
+function importCsvFromRestApi(url) {
+  return request
+    .get({
+      uri: url,
+      json: false
+    })
+    .then(response => {
+      const result = papa.parse(response, {
+        header: true,
+        dynamicTyping: true
+      });
+
+      return result.data;
+    });
+}
+
+module.exports = importCsvFromRestApi;
+
+```
+
+![alt text](https://i.imgur.com/xx42iaZ.png "A function to import CSV data from a REST API (toolkit-nodejs/importCsvFromRestApi.js)")
+
+> A function to import CSV data from a REST API (toolkit-nodejs/importCsvFromRestApi.js)
+
