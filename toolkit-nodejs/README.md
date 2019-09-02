@@ -128,7 +128,7 @@ fs.readFile("./data/earthquakes.csv", "utf8",
 ![alt text](https://i.imgur.com/TKh3EwO.png "Importing a text file to the CDR")
 > Reading a text file into memory
 
-### First function to add to the toolkit
+#### First function to add to the toolkit
 
 For the convenience of managing the asynchronous operation, we’ll wrap this in a promise. Use boilerplate code that you use each time you load a text file. We’ll reuse this code many times throughout our work, so let’s turn it into a reusable toolkit function.
 
@@ -242,7 +242,7 @@ axios
 > <https://www.npmtrends.com/axios-vs-request-promise-vs-superagent>
 
 
-## Parsing JSON text data
+## Parsing JSON Text Data
 
 Now that we have loaded data into memory, we must decide on how to decode the content.
 
@@ -274,6 +274,7 @@ To read the file, we:
 The following is a new function to import a JSON file to the core data representation. We read the file content using our function `file.read` and then parse the JSON data using `JSON.parse`.
 
 ```js
+// toolkit-nodejs/usage/importJsonFile.js
 "use strict";
 
 const importJsonFile = require('../importJsonFile.js');
@@ -288,9 +289,12 @@ importJsonFile("./data/earthquakes.json")
   });
 
 ```
+
 ![alt text](https://i.imgur.com/DoFb2Rb.png "Importing data from earthquakes.json")
 
 > Importing data from earthquakes.json
+
+#### Second function to add to the toolkit
 
 ```js
 // toolkit-nodejs/importJsonFile.js
@@ -328,7 +332,6 @@ can use our request-promise to load the data from a REST API.
 
 The following shows a new function for our toolkit that imports JSON data from a REST API.
 
-
 ```js
 // toolkit-nodejs/usage/importJsonFromRestApi.js
 'use strict';
@@ -365,6 +368,8 @@ importJsonFromRestApi(url)
 
 > toolkit-nodejs/usage/importJsonFromRestApi
 
+#### Third function to add to the toolkit
+
 ```js
 // toolkit-nodejs/importJsonFromRestApi.js
 'use strict';
@@ -389,3 +394,93 @@ The above code shows how to call `importJsonFromRestApi` to import data from the
 REST API. Rather than loading the data from a file, it loads it from the REST API.
 
 > The incoming data is reorganized to fit our idea of the CDR. The incoming JSON data isn’t structured exactly how we’d like it to be to fit, so we rewrite on the fly into a tabular format.
+
+## Parsing CSV Text Data
+
+The CSV (comma-separated values) format is a simple format that directly represents tabular data and is a more compact representation than JSON
+
+> CSV is commonly used in the data science community.
+
+The tools to parse CSV files aren't included in Javascript. We need to install a third-party npm package to help us out with that.
+
+## Parsing A CSV Text File - Papa Parse
+
+A CSV file is a plain old text file: each line of the file is a row of data. Each row is then divided into fields that are separated by commas, hence the name of the data format.
+
+> Before we attempt to import our data file, it’s a good idea to open the file in a text editor and visually verify that the data is what we think it is. There’s no point trying to work with a data file that’s corrupted or has other problems, and we can easily and quickly check for this before we start coding. This won’t catch all conceivable issues, but you might be surprised how many data issues you can spot by first doing a simple visual check.
+
+Let’s import our CSV file to the core data representation. This is a bit more difficult
+than with JSON, but only because we must install the third-party library Papa Parse to
+do the job of parsing the CSV data. Unlike JSON, the CSV format doesn’t directly line
+up with the CDR, so it needs to be restructured during the import process.
+
+1. Start by reading the CSV text file into memory
+2. Use Papa Parse to decode the text data to the CDR.
+
+![alt text](https://i.imgur.com/I8T2eaF.png "Importing a CSV text file to the CDR")
+
+> Importing a CSV text file to the CDR
+
+
+![alt text](https://i.imgur.com/itmMtiS.png "Shows earthquakes.csv loaded in VSCode")
+
+> Shows earthquakes.csv loaded in VSCode
+
+#### Fourth function to add to the toolkit
+
+The following code is our next toolkit function; this one imports a CSV file to the
+core data representation. We use our toolkit function `file.read` to load the file
+into memory; then we parse the CSV data using `papa.parse`.
+
+```js
+// toolkit-nodejs/importCsvFile.js
+'use strict';
+
+const papa = require('papaparse');
+const file = require('./file.js');
+
+// Helper function to import a CSV file.
+
+function importCsvFile(filePath) {
+  return file.read(filePath).then(textFileData => {
+    const result = papa.parse(textFileData, {
+      header: true,
+      dynamicTyping: true
+    });
+    return result.data;
+  });
+}
+
+module.exports = importCsvFile;
+```
+
+![alt text](https://i.imgur.com/itmMtiS.png "A function to import a CSV text file (toolkit/importCsvFile.js)")
+
+![alt text](https://i.imgur.com/IwKU0P8.png "A function to import a CSV text file (toolkit/importCsvFile.js)")
+
+> A function to import a CSV text file (toolkit/importCsvFile.js)
+
+Note the options used with Papa Parse.
+
+> The `header` option makes Papa Parse recognize the first line of the CSV file as the header line that specifies the column names for the tabular data.
+> The `dynamicTyping` option enables Papa Parse’s automatic type conversion. Unlike JSON, CSV has no special support for data types. Every field in CSV is just a string value, but Papa Parse will figure out the actual data types for us. Papa parse has the capability for selecting a type for each field value. Depending on what type Papa Parse sees for each value, this can be very convenient when it works. Sometimes Papa Parse chooses the wrong type.
+
+```js
+// toolkit-nodejs/usage/importCsvFile.js
+"use strict";
+
+const importCsvFile = require('../importCsvFile.js');
+
+importCsvFile("./data/earthquakes.csv")
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.error("An error occurred.");
+    console.error(err.stack);
+  });
+```
+
+![alt text](https://i.imgur.com/8GpmtKh.png "Importing data from earthquakes.csv with our new toolkit function")
+
+> Importing data from earthquakes.csv with our new toolkit function
