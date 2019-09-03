@@ -631,6 +631,34 @@ hostname in the connection string. For example, if you have an internet-accessib
 database available on a machine with host name `my_host.com`, then your connection
 string might look like this: `my_host.com:27017/my_database`.
 
+### Importing data from MySQL
+
+SQL is a mainstay of the business world, and much data is contained within SQL databases.
+To read data from the MySQL, we’ll use a third-party library called `nodejs-mysql`.
+
+![alt text](https://i.imgur.com/FBmEIiz.png "The process of retrieving data from a SQL database and importing it to the core data representation.")
+
+> The process of retrieving data from an earthquakes database and
+importing it to the core data representation.
+
+MySQL is a little more difficult to set up than MongoDB. After installation of MySQL
+and before you import data, you must define your schema, something that isn’t necessary
+with MongoDB.
+
+![alt text](https://i.imgur.com/xQkqymI.png "A function to import data from a MySQL database (toolkit-nodejs/importFromMySql.js)")
+
+> A function to import data from a MySQL database (toolkit-nodejs/
+importFromMySql.js)
+
+The importFromMySql function connects to the earthquakes database and imports data from the largest_earthquakes table. Running this code will retrieve the data from the MySQL database and print it to the console.
+
+![alt text](https://i.imgur.com/XLYXjUj.png "Importing largest earthquakes table from MySQL")
+
+> Importing largest earthquakes table from MySQL
+
+
+
+
 
 ## Resources
 
