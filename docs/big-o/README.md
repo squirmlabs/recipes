@@ -1,5 +1,14 @@
 # Big-O Notation
 
+Big-O is important for analyzing and comparing the efficiencies of algorithms.
+The analysis of Big-O starts by looking at the code and applying the rules to simplify
+the Big-O notation. The following are the most often used rules:
+
+- Eliminating coefficients/constants (coefficient rule)
+- Adding up Big-Os (sum rule)
+- Multiplying Big-Os (product rule)
+- Determining the polynomial of the Big-O notation by looking at loops
+(polynomial rule)
 
 ## Primer
 
@@ -21,7 +30,7 @@ O(**n**) is **linear time** and applies to algorithms that must do **n** operati
 
 ```js
 function linearTime(n){
-  for(var i=0; i < n; i++) {
+  for(let i = 0; i < n; i++) {
     console.log(i);
   }
 }
@@ -33,9 +42,9 @@ O(**n**<sup>2</sup>) is quadratic time. An example of this complexity is shown h
 
 ```js
 function quadraticTime(n){
-  for(var i=0; i < n; i++) {
+  for(let i = 0; i < n; i++) {
     console.log(i);
-    for(var j=i; j < n; j++) {
+    for(let j = i; j < n; j++) {
       console.log(j);
     }
   }
@@ -48,11 +57,11 @@ O(**n**<sup>3</sup>) is cubic time. An example of this complexity is shown here:
 
 ```js
 function cubicTime(n){
-  for(var i=0; i < n; i++) {
+  for(let i=0; i < n; i++) {
     console.log(i);
-    for(var j = i; j < n; j++) {
+    for(let j = i; j < n; j++) {
       console.log(j);
-      for(var k = j; k < n; k++) {
+      for(let k = j; k < n; k++) {
         console.log(k);
       }
 
@@ -68,7 +77,7 @@ An example of logarithmic time complexity is printing elements that are a power 
 
 ```js
 function logarithmicTime(n) {
-  for(var i = 2; i <= n; i = i * 2) {
+  for(let i = 2; i <= n; i = i * 2) {
     console.log(i);
   }
 }
@@ -101,8 +110,8 @@ Here is an example of a code block with a time complexity of `O(n)`:
 
 ```js
 function a(n){
-  var count = 0;
-  for (var i = 0; i < n; i ++){
+  let count = 0;
+  for (let i = 0; i < n; i ++){
     count+=1;
   }
   return count;
@@ -114,8 +123,8 @@ this function is `O(n)` in time complexity:
 
 ```js
 function a(n){
-  var count = 0;
-  for (var i = 0; i < 5*n; i ++){
+  let count = 0;
+  for (let i = 0; i < 5*n; i ++){
     count+=1;
   }
   return count;
@@ -129,8 +138,8 @@ complexity but with an additional operation on line 6:
 
 ```js
 function a(n){
-  var count = 0;
-  for (var i = 0; i < n; i ++){
+  let count = 0;
+  for (let i = 0; i < n; i ++){
     count+=1;
   }
   count+=3;
@@ -141,25 +150,86 @@ function a(n){
 This block of code has `f(n) = n+1`. There is +1 from the last operation
 (count+=3). This still has a Big-O notation of `O(n)`. This is because that 1 operation is not dependent on the input `n`. As `n` approaches infinity, it will become negligible.
 
-### Sum rule
+### Sum rule “Add Big-Os Up”
 
 If `f(n)` is `O(h(n))` and `g(n)` is `O(p(n))`, then `f(n)+g(n)` is
-`O(h(n)+p(n))`. The sum rule simply states that if a resultant time
-complexity is a sum of two different time complexities, the resultant
-Big-O notation is also the sum of two different Big-O notations.
+`O(h(n)+p(n))`.
 
-### Product rule
+The sum rule simply states that if a resultant time complexity is a sum of two different time complexities, the resultant Big-O notation is also the sum of two different Big-O notations.
 
-If `f(n)` is `O(h(n))` and `g(n)` is `O(p(n))`, then `f(n)g(n)` is `O(h(n)p(n))`. Similarly, the product rule states that Big-O is multiplied
-when the time complexities are multiplied.
+The sum rule is intuitive to understand; time complexities can be added. Imagine a
+master algorithm that involves two other algorithms. The Big-O notation of that master
+algorithm is simply the sum of the other two Big-O notations.
+
+It is important to remember to apply the coefficient rule after applying this rule.
+
+The following code block demonstrates a function with two main loops whose time
+complexities must be considered independently and then summed:
+
+```js
+function a(n) {
+  let count = 0;
+  for (let i = 0; i < n; i ++) {
+    count+=1;
+  }
+  for (let i = 0; i < 5 * n; i ++) {
+    count+=1;
+  }
+  return count;
+}
+```
+
+In this example, line 4 has `f(n) = n`, and line 7 has `f(n) = 5n`. This results in `6n`.
+However, when applying the coefficient rule, the final result is `O(n) = n`.
+
+
+### Product rule “Multiply Big-Os”
+
+If `f(n)` is `O(h(n))` and `g(n)` is `O(p(n))`, then `f(n)g(n)` is `O(h(n)p(n))`.
+
+Similarly, the product rule states that Big-O is multiplied when the time complexities are multiplied.
+
+The product rule simply states how Big-Os can be multiplied.
+
+The following code block demonstrates a function with two nested for loops for
+which the product rule is applied:
+
+```js
+function (n) {
+  let count = 0;
+  for(let i = 0; i < n; i++) {
+    count+=1;
+    for(let i = 0; i < 5 * n; i++) {
+      count+=1;
+    }
+  }
+  return count;
+}
+```
+
+In this example, `f(n) = 5n*n` because line 7 runs `5n` times for a total of n iterations. Therefore, this results in a total of `5n2` operations. Applying the coefficient rule, the result is that `O(n)=n2`.
 
 ### Transitive rule
 
-If `f(n)` is `O(g(n))` and `g(n)` is `O(h(n))`, then `f(n)` is `O(h(n))`. The transitive rule is a simple way to state that the same time complexity has the same Big-O.
+If `f(n)` is `O(g(n))` and `g(n)` is `O(h(n))`, then `f(n)` is `O(h(n))`.
 
-### Polynomial rule
+The transitive rule is a simple way to state that the same time complexity has the same Big-O.
 
-If `f(n)` is a polynomial of degree `k`, then `f(n)` is `O(nk)`. Intuitively, the polynomial rule states that polynomial time complexities have Big-O of the same polynomial degree.
+### Polynomial rule “Big-O to the Power of k”
+
+If `f(n)` is a polynomial of degree `k`, then `f(n)` is `O(nk)`.
+
+Intuitively, the polynomial rule states that polynomial time complexities have Big-O of the same polynomial degree.
+
+```js
+function a(n) {
+  let count = 0;
+  for(let i = 0; i < n * n; i++) {
+    count+=1;
+  }
+  return count;
+}
+```
 
 ### Log of a power rule
 
