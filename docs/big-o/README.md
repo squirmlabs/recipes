@@ -7,7 +7,7 @@ The Big-O notation measures the worst-case complexity of an algorithm. **n** rep
 
 Big-O Notation tells us how efficient the algorithm is.
 
-![alt text](https://i.imgur.com/XLYXjUj.png "Common Big-O complexities")
+![alt text](https://i.imgur.com/pD6HhVd.png "Common Big-O complexities")
 
 > Common Big-O complexities
 
