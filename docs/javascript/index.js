@@ -114,3 +114,11 @@ var function2 = function() {
   console.log(2);
 };
 console.log(function1 == function2); // prints 'false'
+
+// Number.EPSILON
+
+function numberEquals(x, y) {
+  return Math.abs(x - y) < Number.EPSILON;
+}
+
+numberEquals(0.1 + 0.2, 0.3); // true

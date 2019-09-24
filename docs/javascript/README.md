@@ -275,3 +275,61 @@ where `n` is an `integer`. While trying to calculate 0.1, long division will go 
 ![alt text](https://i.imgur.com/SrtUSwr.png "Long division for 0.1")
 > Long division for 0.1
 
+There are some built-in properties of the `Number` object in JavaScript that help
+work around this.
+
+### Integer Rounding
+
+Since JavaScript uses floating point to represent all numbers, integer division does not work.
+
+Integer division in programming languages like Java simply evaluates division expressions to their quotient.
+
+For example, 5/4 is 1 in Java because the quotient is 1 (although there is a remainder
+of 1 left). However, in JavaScript, it is a floating point.
+
+```js
+const v = 5/4 // 1.25
+```
+
+This is because Java requires you to explicitly type the integer as an integer.
+
+Hence, the result cannot be a floating point. However, if JavaScript developers want to
+implement integer division, they can do one of the following:
+
+- `Math.floor` - rounds down to nearest integer
+- `Math.round` - rounds to nearest integer
+- `Math.ceil` - rounds up to nearest integer
+
+```js
+// Integer Rounding
+
+Math.floor(0.9); // 0
+Math.floor(1.1); // 1
+
+Math.round(0.49); // 0
+Math.round(0.5); // 1
+Math.round(2.9); // 3
+
+Math.ceil(0.1); // 1
+Math.ceil(0.9); // 1
+Math.ceil(21); // 21
+Math.ceil(21.01); // 22
+```
+
+### Number.EPSILON
+
+`Number.EPSILON` returns the smallest interval between two representable numbers.
+This is useful for the problem with floating-point approximation.
+
+```js
+function numberEquals(x, y) {
+  return Math.abs(x - y) < Number.EPSILON;
+}
+
+numberEquals(0.1 + 0.2, 0.3); // true
+```
+
+This function works by checking whether the difference between the two numbers are smaller than `Number.EPSILON`. Remember that `Number.EPSILON` is the smallest difference between two representable numbers. The difference between 0.1+0.2 and 0.3 will be smaller than `Number.EPSILON`.
+
+
+
