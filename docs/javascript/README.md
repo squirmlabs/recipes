@@ -403,4 +403,11 @@ Infinity > Number.MAX_SAFE_INTEGER; // true
 
 These evaluate to true because nothing can go smaller than -Infinity.
 
+### Size Summary
 
+This inequality summarizes the size of JavaScript numbers from smallest (left) to
+largest (right):
+
+```js
+-Infinity < Number.MIN_SAFE_INTEGER < Number.MIN_VALUE < 0 < Number.MAX_SAFE_INTEGER < Number.MAX_VALUE < Infinity
+```
