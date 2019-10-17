@@ -18,4 +18,5 @@ const myAwaits = async (str1, str2) => {
     `Using multiple awaits, I can handle the results of either promise flexibly: ${promise1} AND ${promise2}`
   );
 };
+
 myAwaits(myFirstString, mySecondString);
