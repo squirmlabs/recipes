@@ -43,29 +43,23 @@ function getPosts() {
   });
 }
 
-const promise1 = Promise.resolve('Hello World');
-const promise2 = 10;
-const promise3 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 2000, 'Goodbye');
-});
-const promise4 = fetch('https://jsonplaceholder.typicode.com/users').then(res =>
-  res.json()
-);
+async function fetchUsers() {
+  const users = await fetch('https://jsonplaceholder.typicode.com/users');
+  const data = await users.json();
+  console.log("TCL: fetchUsers -> data", data)
+}
+async function init() {
+  await createPost({
+    title: 'Post Three',
+    body: 'This is post three'
+  });
+  renderPosts();
+  await createPost({
+    title: 'Post Four',
+    body: 'This is post four'
+  });
+  renderPosts();
+  fetchUsers();
+}
 
-const createPostThree = createPost({
-  title: 'Post Three',
-  body: 'This is post three'
-})
-  .then(renderPosts)
-  .catch(err => console.log(err));
-
-const createPostFour = createPost({
-  title: 'Post Four',
-  body: 'This is post four'
-})
-  .then(renderPosts)
-  .catch(err => console.log(err));
-
-Promise.all([promise1, promise2, promise3, getPosts(), promise4]).then(values =>
-  console.log(values)
-);
+init();
