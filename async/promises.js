@@ -15,7 +15,6 @@ const promiseOfString = string => {
   });
 };
 
-
 const exampleString = "Lucifer's string";
 
 // This function takes a string,
@@ -66,4 +65,55 @@ function createPost(post) {
 createPost({ title: 'Post Three', body: 'This is post three' })
   .then(getPosts)
   .catch(err => console.log(err));
+
+const random = () => {
+  return Promise.resolve(Math.random());
+};
+
+'Bad Promise Code 💩';
+
+const sumRandomAsyncNumsBad = () => {
+  let first;
+  let second;
+  let third;
+
+  return random()
+    .then(v => {
+      first = v;
+      return random();
+    })
+    .then(v => {
+      second = v;
+      return random();
+    })
+    .then(v => {
+      third = v;
+      return first + second + third;
+    })
+    .then(v => {
+      console.log('Result', v);
+    });
+};
+
+'Good Loop Code ✅';
+
+const sumRandomAsyncNumsGood = async () => {
+  const first = await random();
+  const second = await random();
+  const third = await random();
+  if (await random()) {
+
+  }
+  
+  const randos = Promise.all([
+    random(),
+    random(),
+    random(),
+  ])
+  
+  for(const r of await randos) {
+    console.log(`Result ${r}`);
+  }
+  
+};
 
