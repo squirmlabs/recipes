@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "papaparse": "^4.3.3",
+    "papaparse": "^5.2.0",
     "promised-mongo": "^1.2.0"
   }
 }
